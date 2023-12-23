@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<% include('partials/head.ejs') %>
+
+  <% if (typeof message !=='undefined' ) { %>
+    <%= message %>
+      <%}%>
+
+        <body>
+          <h1><%- title %></h1>
+          <% include('partials/navbar.ejs') %>
+            <form action="/register/add" method="POST">
+              <div>
+                <label for="">Nome</label>
+                <input type="text" name="name" id="" placeholder="Digite seu nome">
+              </div>
+              <div>
+                <label for="">Idade</label>
+                <input type="text" name="age" id="" placeholder="Digite sua idade">
+              </div>
+              <div>
+                <label for="">E-mail</label>
+                <input type="text" name="email" id="" placeholder="Digite seu e-mail">
+              </div>
+              <div>
+                <label for="">Senha</label>
+                <input type="text" name="password" id="" placeholder="Digite sua senha">
+              </div>
+              <button type="submit">Cadastrar</button>
+            </form>
+            <% include('partials/foot.ejs') %>
+        </body>
+
+</html>

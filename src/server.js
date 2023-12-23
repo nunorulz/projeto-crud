@@ -1,8 +1,11 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const path = require('path');
 
+const db = require('./database');
+const routes = require('./routes');
 const app = express();
+
+db.connect();
 
 //define o template engine
 app.set('view engine', 'ejs');
@@ -14,12 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //habilita server para receber dados via post (formulario)
 app.use(express.urlencoded({ extended: true }));
 
-//rotas
-app.get('/', (req, res) => {
-  res.render('index', {
-    title: 'Título Teste',
-  });
-});
+//definindo as rotas
+app.use('/', routes);
 
 //404
 app.use((req, res) => {
